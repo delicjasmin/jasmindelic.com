@@ -79,19 +79,19 @@ export function Resume() {
         <p>Software Engineer · Tuzla, Bosnia and Herzegovina</p>
         <p className="mt-1">
           <a
-            className="text-[#000080] underline"
+            className="text-(--link) underline"
             href="mailto:delicjasmi@gmail.com"
           >
             delicjasmi@gmail.com
           </a>
           {" · "}
-          <a className="text-[#000080] underline" href="tel:+38762355912">
+          <a className="text-(--link) underline" href="tel:+38762355912">
             +387 62 355 912
           </a>
         </p>
         <p>
           <a
-            className="text-[#000080] underline"
+            className="text-(--link) underline"
             href="https://github.com/delicjasmin"
             target="_blank"
             rel="noreferrer"
@@ -100,7 +100,7 @@ export function Resume() {
           </a>
           {" · "}
           <a
-            className="text-[#000080] underline"
+            className="text-(--link) underline"
             href="https://www.linkedin.com/in/delic-jasmin/"
             target="_blank"
             rel="noreferrer"
@@ -109,7 +109,7 @@ export function Resume() {
           </a>
           {" · "}
           <a
-            className="text-[#000080] underline"
+            className="text-(--link) underline"
             href="/Jasmin-Delic-CV.pdf"
             target="_blank"
             rel="noreferrer"
@@ -164,9 +164,7 @@ export function Resume() {
 
       <section className="mt-3">
         <h2 className="text-[13px] font-bold">Education</h2>
-        <p className="mt-1">
-          BSc of Civil Engineering, University of Sarajevo
-        </p>
+        <p className="mt-1">BSc of Civil Engineering, University of Sarajevo</p>
       </section>
     </article>
   );

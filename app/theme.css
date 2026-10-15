@@ -1,0 +1,48 @@
+:root {
+  color-scheme: light dark;
+  --link: #000080;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #014f41;
+  --foreground: #e8e4de;
+  --link: #9ec1ff;
+
+  --r95-color-anchor: #9ec1ff;
+  --r95-color-anchorVisited: #c4b0e8;
+  --r95-color-borderDark: #2a251f;
+  --r95-color-borderDarkest: #14110e;
+  --r95-color-borderLight: #7a7166;
+  --r95-color-borderLighter: #a3988a;
+  --r95-color-borderLightest: #d2c4b2;
+  --r95-color-canvas: #0c0b09;
+  --r95-color-canvasText: #e8e4de;
+  --r95-color-headerBackground: #00093e;
+  --r95-color-headerNotActiveBackground: #4d463e;
+  --r95-color-headerNotActiveText: #d2cbc2;
+  --r95-color-headerText: #f4f1ec;
+  --r95-color-material: #4a433b;
+  --r95-color-materialText: #f3efe8;
+  --r95-color-materialTextDisabled: #8d8478;
+  --r95-color-materialTextDisabledShadow: #2a251f;
+  --r95-color-materialTextInvert: #f4f1ec;
+  --r95-color-progress: #00093e;
+  --r95-color-inputBackground: #0c0b09;
+  --r95-color-inputBackgroundDisabled: #3a342e;
+  --r95-shadow-out: inset 0.5px 0.5px 0px 0.5px #d2c4b2,
+          inset 0 0 0 1px #2a251f,
+          1px 0px 0 0px #14110e,
+          0px 1px 0 0px #14110e,
+          1px 1px 0 0px #14110e;
+  --r95-shadow-in: inset 0px 0px 0px 0px,
+        inset 1px 1px 0px 0px #2a251f,
+        0.5px 0.5px 0px 0.5px #d2c4b2;
+  --r95-shadow-input: inset -1px -1px 0 0 #4a433b,
+            inset 1px 1px 0 0 #14110e,
+            0.5px 0.5px 0 0.5px #d2c4b2;
+}

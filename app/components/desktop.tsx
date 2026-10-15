@@ -10,8 +10,9 @@ import {
   type ReactElement,
   type ReactNode,
 } from "react";
-import { CapitalistIcon, QuizIcon, ResearchIcon } from "./icons";
+import { CapitalistIcon, QuizIcon, ResearchIcon, ThemeIcon } from "./icons";
 import { Resume } from "./resume";
+import { applyTheme, readThemeChoice, type ThemeChoice } from "../theme";
 
 const DESKTOP_PLAY =
   "(min-width: 768px) and (hover: hover) and (pointer: fine)";
@@ -93,7 +94,7 @@ function TextLink({
   return (
     <a
       href={href}
-      className="text-[#000080] underline"
+      className="text-(--link) underline"
       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
     >
       {children}
@@ -219,7 +220,6 @@ function Prehistorik() {
       title="Prehistorik 2"
       className="block h-[min(480px,calc(100dvh-120px))] w-full border-0 bg-black"
       allow="fullscreen; autoplay"
-      allowFullScreen
     />
   );
 }
@@ -321,9 +321,32 @@ const desktopIds = startMenu.filter(
 export default function Desktop() {
   const [open, setOpen] = useState<ProgramId[]>(["readme"]);
   const [selected, setSelected] = useState<ProgramId | null>(null);
+  const [theme, setTheme] = useState<ThemeChoice>(readThemeChoice);
   const [canPlay, setCanPlay] = useState(
     () => window.matchMedia(DESKTOP_PLAY).matches,
   );
+  useEffect(() => {
+    applyTheme(theme);
+  }, [theme]);
+  useEffect(() => {
+    function onPointerDown(event: PointerEvent) {
+      const menu = document.querySelector("ul.start-menu");
+      if (!menu) return;
+
+      const target = event.target;
+      if (!(target instanceof Node) || menu.contains(target)) return;
+
+      const start = document.querySelector(".taskbar > button");
+      if (start?.contains(target)) return;
+
+      if (menu.parentElement instanceof HTMLElement) {
+        menu.parentElement.click();
+      }
+    }
+
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, []);
   useEffect(() => {
     const query = window.matchMedia(DESKTOP_PLAY);
     const update = () => {
@@ -372,6 +395,9 @@ export default function Desktop() {
         .app-window > .draggable {
           flex-shrink: 0;
         }
+        html[data-theme="dark"] .app-window .draggable button img {
+          filter: invert(1);
+        }
         .window-body {
           min-height: 0;
           overflow: auto;
@@ -398,6 +424,13 @@ export default function Desktop() {
                 </List.Item>
               );
             })}
+            <List.Divider />
+            <List.Item
+              icon={<ThemeIcon theme={theme === "dark" ? "light" : "dark"} />}
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            >
+              {theme === "dark" ? "Light theme" : "Dark theme"}
+            </List.Item>
           </List>
         }
       />
